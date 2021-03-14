@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify
 from darf import Darf
-from codigo_de_barra_bb import Codigodebarra
-import base64
-from io import BytesIO
+
 
 app = Flask(__name__)
 
@@ -21,20 +19,7 @@ def darf():
         vencimento         = request.args.get('vencimento')
         apuracao           = request.args.get('apuracao')
         valor              = request.args.get('valor')
-        codigobarras, linhadigitavel = Darf.codigo_de_barras(codigoreceita, codigocontribuinte, vencimento, apuracao, valor)
-
-        barra = Codigodebarra()
-        # formato que deseja salvar a imagem (PNG,GIF)
-        tipo = 'PNG'
-        # retornando uma imagem a partir do código de barra
-        image = barra.getcodbarra(codigobarras)
-        # salvando imagem do tipo informado na variavel tipo
-        #image.save('%s.%s' % (codigo, tipo))
-
-        #Convertendo base64
-        buffered = BytesIO()
-        image.save(buffered, format="JPEG")
-        encoded_string = base64.b64encode(buffered.getvalue())
+        codigobarras, linhadigitavel, encoded_string = Darf.codigo_de_barras(codigoreceita, codigocontribuinte, vencimento, apuracao, valor)
         #retorno
         response = {"codigoBarras": codigobarras,"linhadigitavel": linhadigitavel, "img": encoded_string.decode("utf-8") }
         return jsonify(response)

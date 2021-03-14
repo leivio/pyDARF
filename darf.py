@@ -1,6 +1,8 @@
 import re
 from datetime import date, datetime
-
+import base64
+from io import BytesIO
+from codigo_de_barra_bb import Codigodebarra
 
 class Darf:
     def __init__(self):
@@ -81,4 +83,18 @@ class Darf:
 
         linhadigitavel = PreFor1 + ' ' + PreFor2 + ' ' + PreFor3 + ' ' + PreFor4
 
-        return codigobarras, linhadigitavel
+
+        barra = Codigodebarra()
+        # formato que deseja salvar a imagem (PNG,GIF)
+        tipo = 'PNG'
+        # retornando uma imagem a partir do código de barra
+        image = barra.getcodbarra(codigobarras)
+        # salvando imagem do tipo informado na variavel tipo
+        #image.save('%s.%s' % (codigo, tipo))
+
+        #Convertendo base64
+        buffered = BytesIO()
+        image.save(buffered, format="JPEG")
+        encoded_string = base64.b64encode(buffered.getvalue())
+
+        return codigobarras, linhadigitavel, encoded_string
