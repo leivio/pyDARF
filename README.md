@@ -12,11 +12,11 @@ pyDARF takes care of the infrastructure and APIs needed for the realtime communi
 ```python
 from darf import Darf
 
-codigoreceita         = '0211'
+codigoreceita       = '0211'
 codigocontribuinte  =  '66342797000113'
-vencimento             = '2021-03-18'
-apuracao                = '2021-02-28'
-valor                      =  129,33
+vencimento          = '2021-03-18'
+apuracao            = '2021-02-28'
+valor               =  129,33
 
 codigobarras, linhadigitavel, encoded_string = Darf.codigo_de_barras(codigoreceita, codigocontribuinte, vencimento, apuracao, valor)
 
