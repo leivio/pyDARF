@@ -4,10 +4,10 @@
 
 This is the official pyDARF repository.
 
-pyDARF takes care of the infrastructure and APIs needed for the realtime communication layer of your application. Work on your app's logic and let PubNub handle sending and receiving data across the world in less than 100ms.
+pyDARF takes simple lib for generation the barcode and digitable line layer of your application. Used to pay taxes from the Brazilian Federal Revenue.
+Standard followed by the FEBRABAN document and carried out tests with apps from banks in Brazil.
 
-
-## Samples
+## example
 
 ```python
 from darf import Darf
@@ -26,7 +26,7 @@ print(encoded_string)
 
 ```
 
-## Deploy with Flask
+## example with Flask
 
 ```python
 from flask import Flask, request, jsonify
