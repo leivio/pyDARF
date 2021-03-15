@@ -7,7 +7,7 @@ This is the official pyDARF repository.
 pyDARF takes care of the infrastructure and APIs needed for the realtime communication layer of your application. Work on your app's logic and let PubNub handle sending and receiving data across the world in less than 100ms.
 
 
-## Add event listeners
+## Samples
 
 ```python
 from darf import Darf
