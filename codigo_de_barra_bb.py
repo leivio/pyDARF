@@ -64,6 +64,8 @@ class Codigodebarra:
         # P = preto
         # B = banco
 
+        print("b: ", b)
+
         # percorre toda a string b e onde for P pinta de preto, onde for B pinta de banco
 
         for i in range(0, len(b)):

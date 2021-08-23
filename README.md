@@ -1,4 +1,4 @@
-# pyDARF 
+# pyDARF
 
 [![PyPI](https://img.shields.io/pypi/pyversions/pubnub.svg)](https://pypi.python.org/pypi/pubnub/)
 
@@ -52,12 +52,32 @@ def darf():
 
 if __name__ == '__main__':
     app.run()
-	
-# http://127.0.0.1:5000?codigoreceita=0211&codigocontribuinte=66342797000113&vencimento=2021-03-18&apuracao=2021-02-28&valor=123.49
-	
-```
 
+# http://127.0.0.1:5000?codigoreceita=0211&codigocontribuinte=66342797000113&vencimento=2021-03-18&apuracao=2021-02-28&valor=123.49
+
+```
 
 ## Support
 
 If you **need help** or have a **general question**, contact leivio@yahoo.com.br
+
+## Start project
+
+Create the environment:
+
+```bash
+python3 -m venv venv
+. venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start app:
+
+```bash
+flask run
+```

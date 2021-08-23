@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 import re
 from datetime import date, datetime
 import base64
@@ -62,12 +64,23 @@ class Darf:
           _codigocontribuinte = '0' + _codigocontribuinte
           _codigoreceita = Darf.str_to_zero(codigoreceita, 5)
 
+        print("_valor: " + _valor)
+        print("_apuracao: " + str(_apuracao))
+        print("_vencimento: " + str(_vencimento))
+        print("_codigocontribuinte: " + _codigocontribuinte)
+
         # Juncao dos codigos
         codigobarras = pre + _valor + orgao + str(_vencimento) + _codigocontribuinte + _codigoreceita + str(_apuracao)
 
+        print("codigobarras1: " + codigobarras)
+
+
         digito0 = Darf.calcula_mod_10(codigobarras)
+        
+        print("digito0: " + digito0)
 
         codigobarras = codigobarras[:3] + digito0 + codigobarras[3:]
+        print("codigobarras2: " + codigobarras)
 
         PreFor1 = codigobarras[0:11]
         PreFor1 = PreFor1 + '-' + Darf.calcula_mod_10(PreFor1)
@@ -82,6 +95,7 @@ class Darf:
         PreFor4 = PreFor4 + '-' + Darf.calcula_mod_10(PreFor4)
 
         linhadigitavel = PreFor1 + ' ' + PreFor2 + ' ' + PreFor3 + ' ' + PreFor4
+        print("linhadigitavel: " + linhadigitavel)
 
 
         barra = Codigodebarra()
@@ -90,11 +104,11 @@ class Darf:
         # retornando uma imagem a partir do código de barra
         image = barra.getcodbarra(codigobarras)
         # salvando imagem do tipo informado na variavel tipo
-        #image.save('%s.%s' % (codigo, tipo))
+        # image.save('%s.%s' % (codigocontribuinte, tipo))
 
         #Convertendo base64
         buffered = BytesIO()
-        image.save(buffered, format="JPEG")
+        # image.save(buffered, format="JPEG")
         encoded_string = base64.b64encode(buffered.getvalue())
 
         return codigobarras, linhadigitavel, encoded_string
